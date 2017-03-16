@@ -1,0 +1,30 @@
+﻿Subversion®是Apache软件基金组织的开源项目，其源码和二进制包均可在该组织的官方页面查到。本文介绍几个常用操作系统中SVN客户端的安装，服务端程序的安装出门请左转。
+
+Windows
+在Windows上最受欢迎的客户端是TortoiseSVN，该软件提供比较友好的用户界面。能够帮助新用户快速投入使用而不必去关心繁杂的命令和参数。
+
+Ubuntu Linux
+$ apt-get install subversion
+
+Debian Linux
+$ apt-get install subversion
+
+Red Hat Linux
+$ yum install subversion
+
+Centos Linux
+$ yum install subversion
+
+Fedora Linux
+$ yum install subversion
+
+SUSE or OpenSUSE
+$ zypper install subversion
+
+Mac OS X
+$ brew options subversion
+$ brew install (OPTIONS) subversion
+
+其实笔者也只是尝试过个别操作系统，例如SUSE这种都没有尝试过，如果有误，请到Apache Subversion官网查询。
+
+

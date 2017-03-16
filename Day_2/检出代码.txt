@@ -1,0 +1,52 @@
+﻿第二天，高高兴兴来公司上班，领导说：”今天你把我们项目的代码下下来，先熟悉一下“。”好的“你回答。
+第二天的工作开始了...
+
+创建工作副本【Chapter 2 Basic Usage--Create a Working Copy】
+一般来说，我们使用checkout功能检出代码。该功能将某个目录从中心仓库中检出并且在本地创建一个工作副本。如果不指定其它参数，那么该目录以及子目录的最新（即最近一个提交的）版本将被检出。
+
+$ svn checkout http://svn.example.com/svn/repo/trunk
+A trunk/README
+A trunk/INSTALL
+A trunk/src/main.c
+A trunk/src/header.h
+…
+Checked out revision 8810.
+$
+
+上面的例子演示了如何检出trunk目录，同样你也可以检出中心仓库中下层的子目录，这时需要指定子目录的URL作为checkout的URL。
+
+$ svn checkout http://svn.example.com/svn/repo/trunk/src
+A src/main.c
+A src/header.h
+A src/lib/helpers.c
+…
+Checked out revision 8810.
+$
+
+因为Subversion使用了copy-modify-merge的模型，而不是lock-modify-unlock的模型(详见章节 Versioning Models)，你可以立即对本地工作副本中的文件和目录进行修改。这时你的本地工作副本就像其他的文件目录一样。
+你可对工作副本中的文件进行编辑、重命名甚至是删除整个工作副本，彻底把它忘记
+。
+【注】当你把工作副本视为本地文件目录时，你可以随意对其文件进行编辑，除此之外，你必须告知Subversion你要做什么。例如，如果你想拷贝或者是移动工作副本中的一个对象，你应该使用svn copy 或者是svn move的指令，
+而不是使用操作系统提供的相应指令。后面我们还会提及此事。
+
+在你准备好对中心仓库提交改动前，我们不需要告知中心仓库我们完成了哪些改动。
+
+.svn目录是什么？
+在工作副本的最上层（在版本1.7之前每个加入版本控制的子目录）有一个作为特殊用途的目录.svn。正常情况下，你的操作系统提供的显示目录的指令并不会将该目录的信息展示给你，但是它是一个很重要的目录。
+无论你在工作副本中做什么，都不要去碰这个目录！Subversion使用该目录中的内容来管理你的工作副本。
+
+在之前的两个例子中，Subversion选择使用URL的最后一个路径名作为本地工作副本的目录名。这样处理是为了节省用户时间--即便svn checkout指提供了一个URL参数，也能正常检出工作副本。Subversion的命令行客户端提供了更灵活的
+参数，允许你指定本地目录名来创建该工作副本。例如
+
+$ svn checkout http://svn.example.com/svn/repo/trunk my-working-copy
+A my-working-copy/README
+A my-working-copy/INSTALL
+A my-working-copy/src/main.c
+A my-working-copy/src/header.h
+…
+Checked out revision 8810.
+$
+如果你指定的本地目录还不存在，那么Subversion会创建它。
+
+好了，可以开始阅读项目代码了，什么？已经下午6点了？下班下班！
+
